@@ -18,7 +18,7 @@ module Devise
 
       # Verifies whether an incoming_password (ie from sign in) is the user password.
       def valid_password?(incoming_password)
-        valid = Devise::ImapAdapter.valid_credentials?(self.send(Devise.imap_auth_entitiy), incoming_password)
+        valid = Devise::ImapAdapter.valid_credentials?(self.send(Devise.imap_auth_entity), incoming_password)
         if valid && new_record? # Create this record if valid.
           create
         end
