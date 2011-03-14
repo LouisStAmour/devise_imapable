@@ -37,6 +37,16 @@ describe "Users" do
           response.should render_template('page/private')
         end.should change(User, :count).by(1)
       end
+      
+      it "should allow access with valid database credentials" do
+        user = create_user
+        Devise::ImapAdapter.stub!(:valid_credentials?).and_return(false)
+        visit new_user_session_path
+        fill_in "Email",    :with => user.email
+        fill_in "Password", :with => user.password
+        click_button
+        response.should render_template('page/private')
+      end
     end
   end
 end
