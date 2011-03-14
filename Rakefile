@@ -15,6 +15,14 @@ Rake::TestTask.new(:test) do |t|
   system("cd #{rails_root} && rake")
 end
 
+desc 'Setup the test environment.'
+namespace :test do
+  task :setup do
+    rails_root = File.join(File.dirname(__FILE__), 'test', 'rails_root')
+    system("cd #{rails_root} && bundle install && rake db:migrate && rake db:test:prepare")
+  end
+end
+
 desc 'Generate documentation for the devise_imapable plugin.'
 Rake::RDocTask.new(:rdoc) do |rdoc|
   rdoc.rdoc_dir = 'rdoc'
