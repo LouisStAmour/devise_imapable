@@ -1,4 +1,11 @@
 RailsRoot::Application.routes.draw do
+
+  root :to => "page#private"
+
+  get "page/public"
+
+  get "page/private"
+
   devise_for :users
 
   # The priority is based upon order of creation:

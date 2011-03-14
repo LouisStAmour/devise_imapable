@@ -11,6 +11,8 @@ Rake::TestTask.new(:test) do |t|
   t.libs << 'test'
   t.pattern = 'test/**/*_test.rb'
   t.verbose = true
+  rails_root = File.join(File.dirname(__FILE__), 'test', 'rails_root')
+  system("cd #{rails_root} && rake")
 end
 
 desc 'Generate documentation for the devise_imapable plugin.'
