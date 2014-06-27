@@ -17,7 +17,7 @@ module Devise
   mattr_accessor :imap_options
   @@imap_options = {}
 
-  mattr_accessor :imap_auth_entitiy
+  mattr_accessor :imap_auth_entity
   @@imap_auth_entity = :email
 end
 
